@@ -1,0 +1,39 @@
+<div class="container">
+   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div>
+        <label for="firstName">First name</label>
+        <input type="text" name="firstName" id="firstName" [(ngModel)]="firstName" class="form-control">
+      </div>
+      <div>
+        <label for="lastName">Last name</label>
+        <input type="text" name="lastName" id="lastName" [(ngModel)]="lastname" class="form-control">
+      </div>
+      <div>
+        <label for="phoneNumber">Phone number</label>
+        <input type="tel" name="phoneNumber" id="phoneNumber" [(ngModel)]="phoneNumber" pattern="^[1-9]+[0-9]*$" class="form-control">
+      </div>
+      <div style="margin-top: 30px;">
+        <input type="submit" value="submit" class="btn btn-success">
+      </div>
+    </form>
+  <div>
+  <div *ngIf="isLoading" class="table table-responsive table-striped">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">first name</th>
+            <th scope="col">last name</th>
+            <th scope="col">phone number</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows; let id = index;">
+                <td>{{id}}</td>
+                <td>{{row.firstName}}</td>
+                <td>{{row.lastname}}</td>
+                <td>{{row.phoneNumber}}</td>
+              </tr>
+        </tbody>
+      </table>
+  </div>
